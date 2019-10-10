@@ -7,10 +7,10 @@ dashboard_enabled: true
 helm_enabled: true
 
 # Registry deployment
-registry_enabled: false
-# registry_namespace: kube-system
-# registry_storage_class: ""
-# registry_disk_size: "10Gi"
+registry_enabled: true
+registry_namespace: kube-system
+registry_storage_class: "docker-image"
+registry_disk_size: "30Gi"
 
 # Metrics Server deployment
 metrics_server_enabled: false
@@ -78,7 +78,7 @@ rbd_provisioner_enabled: false
 # rbd_provisioner_reclaim_policy: Delete
 
 # Nginx ingress controller deployment
-ingress_nginx_enabled: false
+ingress_nginx_enabled: true
 # ingress_nginx_host_network: false
 ingress_publish_status_address: ""
 # ingress_nginx_nodeselector:
@@ -88,9 +88,9 @@ ingress_publish_status_address: ""
 #     operator: "Equal"
 #     value: ""
 #     effect: "NoSchedule"
-# ingress_nginx_namespace: "ingress-nginx"
-# ingress_nginx_insecure_port: 80
-# ingress_nginx_secure_port: 443
+ingress_nginx_namespace: "ingress-nginx"
+ingress_nginx_insecure_port: 80
+ingress_nginx_secure_port: 443
 # ingress_nginx_configmap:
 #   map-hash-bucket-size: "128"
 #   ssl-protocols: "SSLv2"
@@ -100,5 +100,5 @@ ingress_publish_status_address: ""
 #   53: "kube-system/coredns:53"
 
 # Cert manager deployment
-cert_manager_enabled: false
-# cert_manager_namespace: "cert-manager"
+cert_manager_enabled: true
+cert_manager_namespace: "cert-manager"

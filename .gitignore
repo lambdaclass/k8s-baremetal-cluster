@@ -1,0 +1,12 @@
+# Editor
+.vscode/
+
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfvars
+
+# Ansible inventory
+inventory/artifacts
+inventory/credentials
+inventory/inventory.ini

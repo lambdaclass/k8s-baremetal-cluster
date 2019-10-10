@@ -1,15 +1,16 @@
 [all]
 ${names_ips}
 
-[kube-masters]
+[kube-master]
 ${master_names}
 
-[kube-workers]
+[kube-node]
+${master_names}
 ${worker_names}
 
 [etcd]
 ${master_names}
 
 [k8s-cluster:children]
-kube-masters
-kube-workers
+kube-master
+kube-node

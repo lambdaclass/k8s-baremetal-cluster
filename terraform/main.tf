@@ -16,12 +16,13 @@ data "scaleway_image" "ubuntu" {
 }
 
 data "template_file" "ansible_inventory_tpl" {
-  template = file("inventory.tpl")
+  template = file("terraform/inventory.tpl")
 
   vars = {
-    names_ips = join("\n", formatlist("%s %s", concat(scaleway_instance_server.k8s_master.*.name,
+    names_ips = join("\n", formatlist("%s ansible_host=%s ip=%s", 
+                                                concat(scaleway_instance_server.k8s_master.*.name,
                                                       scaleway_instance_server.k8s_worker.*.name),
-                                               concat(scaleway_instance_server.k8s_master.*.public_ip,
+                                                concat(scaleway_instance_server.k8s_master.*.public_ip,
                                                       scaleway_instance_server.k8s_worker.*.public_ip)
                                                       ))
     master_names = join("\n", scaleway_instance_server.k8s_master.*.name)

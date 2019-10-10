@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: "Ensure ping is installed"
+      apt:
+        name: iputils-ping
+        state: present
+
+- name: "Run Kubespray playbook"
+  import_playbook: kubespray/cluster.yml
+
+- name: "Setup MetalLB"
+  import_playbook: kubespray/contrib/metallb/metallb.yml

@@ -18,6 +18,7 @@ Set the following environment variables:
 - `TF_VAR_ssh_name`: A name of your choice to associate to your SHH key
 - `TF_VAR_region`: (OPTIONAL) The Scaleway region, by default `fr-par`
 - `TF_VAR_zone`: (OPTIONAL) The Scaleway zone, by default `fr-par-1`
+- `TF_VAR_instance_type`: (OPTIONAL) The Scaleway Baremetal server type, by default `C2S`
 
 If you are using (or want) a different provider please check their corresponding documentation on how to setup for it at [Terraform Providers](https://www.terraform.io/docs/providers/index.html).
 
@@ -49,6 +50,16 @@ Do you want to perform these actions?
 When finished, terraform will output the IPs of the servers:
 
 ```
+Outputs:
+
+k8s_master_public_ip = [
+  "kube-master-1",
+  "192.168.0.101",
+]
+worker_public_ips = [
+  "kube-worker-1",
+  "192.168.0.102",
+]
 ```
 
 ### Preparing the servers
@@ -84,7 +95,7 @@ kubernetes-dashboard is running at https://192.168.0.101:6443/api/v1/namespaces/
 You can then apply the manifests in the `k8s-manifests` folder. They create an `admin` ServiceAccount and provide it with an elevated ClusterRoleBinding.
 
 ```
-$> kubectl apply -f manifests/
+$> kubectl apply -f k8s-manifests/
 ```
 
 To access the dashboard, first get the service account token:

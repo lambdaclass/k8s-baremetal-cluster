@@ -11,8 +11,7 @@ destroy:
 	terraform destroy terraform/
 
 init:
-	pipenv init --three && pipenv install -r kubespray/requirements.txt
+	pipenv --three && pipenv install -r kubespray/requirements.txt
 
 cluster:
-	pipenv run ansible playbook -i inventory/inventory.ini kubespray/cluster.yml -v -b --private-key=$(SSH_KEY)
-	
+	pipenv run ansible-playbook -i inventory/inventory.ini cluster.yml -b --private-key=$(SSH_KEY)
