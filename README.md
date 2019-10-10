@@ -71,7 +71,7 @@ $> make init
 ```
 
 [Kubespray](https://kubernetes.io/docs/setup/production-environment/tools/kubespray/) copies your ssh key to all the servers specified in the inventory. You can pass the path to your key by setting the environment variable `SSH_KEY` (by default, will be set to `$HOME/.ssh/id_rsa`).  
-To install Kubernetes execute the following command:
+To install Kubernetes execute the following command (and grab a cup of ☕):
 
 ```
 $> make cluster
@@ -95,7 +95,7 @@ kubernetes-dashboard is running at https://192.168.0.101:6443/api/v1/namespaces/
 You can then apply the manifests in the `k8s-manifests` folder. They create an `admin` ServiceAccount and provide it with an elevated ClusterRoleBinding.
 
 ```
-$> kubectl apply -f k8s-manifests/
+$> kubectl apply -f k8s-manifests/ --recursive
 ```
 
 To access the dashboard, first get the service account token:
