@@ -8,6 +8,8 @@
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - Scaleway account (this can be changed to any other provider in Terraform configuration)
 
+Optionally, you can install [Helm](https://helm.sh), a package manager for Kubernetes.
+
 ## Setup
 
 Set the following environment variables:
@@ -113,6 +115,11 @@ $> kubectl proxy
 and open
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
 
+To reset the cluster and remove Kubernetes:
+
+```
+$> make reset
+```
 
 If needed, tear the whole infrastructure down:
 

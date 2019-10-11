@@ -8,6 +8,9 @@ etcd_kubeadm_enabled: false
 ## Directory where the binaries will be installed
 bin_dir: /usr/local/bin
 
+## Kubelet sometimes fails even when swap is off
+kubelet_fail_swap_on: false
+
 ## The access_ip variable is used to define how other nodes should access
 ## the node.  This is used in flannel to allow other flannel nodes to see
 ## this node for example.  The access_ip is really useful AWS and Google
