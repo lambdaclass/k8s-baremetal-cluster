@@ -19,7 +19,7 @@ init: ## Create a Python virtual environment and install Ansible
 	pipenv --three && pipenv install -r kubespray/requirements.txt
 
 cluster: ## Provision cluster with Kubespray
-	pipenv run ansible-playbook -i inventory/inventory.ini cluster.yml -b --private-key=$(SSH_KEY)
+	pipenv run ansible-playbook -i inventory/inventory.ini cluster.yml -b --private-key=$(SSH_KEY) --flush-cache
 
 reset: ## Reset cluster (removes Kubernetes)
 	pipenv run ansible-playbook -i inventory/inventory.ini kubespray/reset.yml -b --private-key=$(SSH_KEY)

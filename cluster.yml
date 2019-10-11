@@ -6,6 +6,8 @@
       apt:
         name: iputils-ping
         state: present
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
 - name: "Run Kubespray playbook"
   import_playbook: kubespray/cluster.yml

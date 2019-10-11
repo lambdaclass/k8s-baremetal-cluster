@@ -3,6 +3,7 @@ provider "scaleway" {
   secret_key        = var.secret_key
   region            = var.region
   zone              = var.zone
+  version           = "~> 1.11"
 }
 
 resource "scaleway_account_ssh_key" "ssh_key" {
@@ -23,10 +24,9 @@ data "template_file" "ansible_inventory_tpl" {
                                                 concat(scaleway_instance_server.k8s_master.*.name,
                                                       scaleway_instance_server.k8s_worker.*.name),
                                                 concat(scaleway_instance_server.k8s_master.*.public_ip,
-                                                      scaleway_instance_server.k8s_worker.*.public_ip)
-                                                      ),
+                                                      scaleway_instance_server.k8s_worker.*.public_ip),
                                                 concat(scaleway_instance_server.k8s_master.*.private_ip,
-                                                      scaleway_instance_server.k8s_worker.*.private_ip)
+                                                      scaleway_instance_server.k8s_worker.*.private_ip))
                                                       )
     master_names = join("\n", scaleway_instance_server.k8s_master.*.name)
     worker_names = join("\n", scaleway_instance_server.k8s_worker.*.name)
