@@ -1,0 +1,32 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: docker-image
+  namespace: kube-system
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: Immediate
+
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv-docker
+  labels:
+    type: local
+spec:
+  storageClassName: docker-image
+  capacity:
+    storage: 30Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/images"
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - kube-master-1
+          - kube-worker-1

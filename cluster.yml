@@ -11,6 +11,3 @@
 
 - name: "Run Kubespray playbook"
   import_playbook: kubespray/cluster.yml
-
-- name: "Setup MetalLB"
-  import_playbook: kubespray/contrib/metallb/metallb.yml

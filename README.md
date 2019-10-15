@@ -12,6 +12,8 @@ Optionally, you can install [Helm](https://helm.sh), a package manager for Kuber
 
 ## Setup
 
+This installation will use [kubespray](https://github.com/kubernetes-sigs/kubespray), so make sure to clone this repository using `--recurse-submodules`.
+
 Set the following environment variables:
 
 - `TF_VAR_organization`: Your Scaleway organization ID
